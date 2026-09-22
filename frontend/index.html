@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Shared State Test</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>FastAPI Shared State Test</h1>
+
+      <p class="description">
+        Enter an integer and send it to the FastAPI backend. The backend will
+        add it only if its shared list is empty.
+      </p>
+
+      <div class="input-section">
+        <input type="number" id="numberInput" placeholder="Enter an integer" />
+
+        <button id="sendButton">Send Number</button>
+      </div>
+
+      <div id="status" class="status">Ready</div>
+
+      <div class="response-section">
+        <h2>Backend Response</h2>
+
+        <pre id="response"></pre>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

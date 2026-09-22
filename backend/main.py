@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from mangum import Mangum
 
 app = FastAPI()
 
@@ -18,11 +19,12 @@ shared_list = []
 class NumberRequest(BaseModel):
     number: int
 
-@app.post("/numbers")
+@app.post("/number")
 async def add_number(request: NumberRequest):
-    if len(shared_list) !=0:
+    if len(shared_list) ==0:
         shared_list.append(request.number)
         return {"message": "Number added successfully", "current_list": shared_list}
     else:
         return {"List not empty, cannot add number."}
-        shared_list.append(request.number)
+
+handler = Mangum(app)
